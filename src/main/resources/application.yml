@@ -1,0 +1,9 @@
+logging:
+  level:
+    root: ERROR
+    '[io.trutz]': INFO
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
