@@ -14,9 +14,13 @@ public class Controller {
 
     @GetMapping("/")
     public String index(HttpSession httpSession) {
-        var now = LocalDateTime.now();
-        httpSession.setAttribute("ts", now);
-        log.info("Now {}", now);
+        var now = httpSession.getAttribute("ts");
+        if (now == null) {
+            now = LocalDateTime.now();
+            httpSession.setAttribute("ts", now.toString());
+            log.info("new ts {}", now);
+            return now.toString();
+        }
         return now.toString();
     }
 
